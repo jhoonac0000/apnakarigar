@@ -794,6 +794,7 @@
           </div>
 
           <h2 class="sec-title disp" data-t="newRequests"></h2>
+          <p class="sec-sub" data-t="reqNote"></p>
           <div class="stack" id="req-list"></div>
           <div class="empty hidden" id="req-empty">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
@@ -825,6 +826,14 @@
                 <label for="f-city" data-t="fCity"></label>
                 <select id="f-city"></select>
               </div>
+              <div class="field">
+                <label for="f-area" data-t="fArea"></label>
+                <select id="f-area"></select>
+              </div>
+              <div class="field">
+                <label for="f-fee" data-t="fFee"></label>
+                <input type="number" id="f-fee" inputmode="numeric" min="0" step="50" placeholder="500" dir="ltr" style="text-align:end" />
+              </div>
               <div class="field full">
                 <label for="f-exp" data-t="fExp"></label>
                 <select id="f-exp">
@@ -844,6 +853,7 @@
             <h3 class="disp" data-t="joinDone"></h3>
             <p data-t="joinDoneSub"></p>
             <p style="margin-top:10px"><b id="join-summary"></b></p>
+            <button type="button" class="btn btn-primary btn-block hidden" id="join-wa" style="margin-top:12px"></button>
             <span class="status" data-t="statusPendingVerify" style="margin-top:6px; display:inline-block"></span>
           </div>
         </section>
@@ -1102,12 +1112,15 @@
         acceptedJobs:"Accepted Jobs", accept:"Accept", reject:"Reject",
         joinTitle:"Register as a Karigar", joinSub:"Fill this small form — our team will verify your CNIC and call you before your profile goes live.",
         fName:"Full name", fPhone:"Mobile number", fService:"Your service / skill", fCity:"City", fExp:"Experience (years)",
+        fArea:"Your area", fFee:"Your visit fee (Rs)", joinWa:"Send details on WhatsApp",
+        bkName:"Your name", bkNamePh:"e.g. Ahmed Raza", waBooking:"Send booking on WhatsApp",
+        reqNote:"Note: in this first phase, real job requests also reach you through our team on WhatsApp.",
         fSubmit:"Submit Application",
-        joinDone:"Application received!", joinDoneSub:"Our team will verify your CNIC and call you. Once approved, jobs near you will start coming in.",
+        joinDone:"Application received!", joinDoneSub:"One more step — tap the WhatsApp button below to send your details to our team. They will verify your CNIC and call you before your profile goes live.",
         statusPendingVerify:"Status: Verification pending",
         day:"Day", time:"Time", address:"Your address (area / street)", addressPh:"e.g. House 12, Street 4, Model Town",
         confirmBooking:"Confirm Booking", close:"Close",
-        bookingDone:"Booking done!", bookingDoneSub:"The karigar has received your request. You will get a call to confirm.",
+        bookingDone:"Booking done!", bookingDoneSub:"Tap the WhatsApp button below to send this booking to our team. They will call you to confirm.",
         gotIt:"OK, got it", serviceLbl:"Service", karigarLbl:"Karigar", feeLbl:"Visit fee",
         toastBooked:"Booking sent to the karigar", toastCancelled:"Booking cancelled",
         toastAccepted:"Job accepted — good luck!", toastRejected:"Request rejected",
@@ -1160,12 +1173,15 @@
         acceptedJobs:"قبول شدہ کام", accept:"قبول کریں", reject:"انکار",
         joinTitle:"کاریگر کے طور پر رجسٹر ہوں", joinSub:"یہ چھوٹا سا فارم بھریں — ہماری ٹیم آپ کے CNIC کی تصدیق کر کے کال کرے گی، پھر آپ کی پروفائل لائیو ہو جائے گی۔",
         fName:"پورا نام", fPhone:"موبائل نمبر", fService:"آپ کی سروس / ہنر", fCity:"شہر", fExp:"تجربہ (سال)",
+        fArea:"آپ کا علاقہ", fFee:"آپ کی وزٹ فیس (روپے)", joinWa:"واٹس ایپ پر تفصیل بھیجیں",
+        bkName:"آپ کا نام", bkNamePh:"مثلاً احمد رضا", waBooking:"بکنگ واٹس ایپ پر بھیجیں",
+        reqNote:"نوٹ: اس پہلے مرحلے میں اصل کام کی درخواستیں ہماری ٹیم آپ کو واٹس ایپ پر بھی بھیجے گی۔",
         fSubmit:"درخواست بھیجیں",
-        joinDone:"درخواست موصول ہو گئی!", joinDoneSub:"ہماری ٹیم آپ کے CNIC کی تصدیق کر کے آپ کو کال کرے گی۔ منظوری کے بعد آپ کے قریب کے کام آنا شروع ہو جائیں گے۔",
+        joinDone:"درخواست موصول ہو گئی!", joinDoneSub:"ایک قدم اور — نیچے واٹس ایپ بٹن دبا کر اپنی تفصیل ہماری ٹیم کو بھیجیں۔ ٹیم آپ کے CNIC کی تصدیق کر کے کال کرے گی، پھر آپ کی پروفائل لائیو ہو گی۔",
         statusPendingVerify:"حیثیت: تصدیق باقی ہے",
         day:"دن", time:"وقت", address:"آپ کا پتہ (علاقہ / گلی)", addressPh:"مثلاً مکان 12، گلی 4، ماڈل ٹاؤن",
         confirmBooking:"بکنگ کنفرم کریں", close:"بند کریں",
-        bookingDone:"بکنگ ہو گئی!", bookingDoneSub:"کاریگر کو آپ کی درخواست مل گئی ہے۔ تصدیق کے لیے آپ کو کال آئے گی۔",
+        bookingDone:"بکنگ ہو گئی!", bookingDoneSub:"نیچے واٹس ایپ بٹن دبا کر یہ بکنگ ہماری ٹیم کو بھیجیں۔ ٹیم تصدیق کے لیے آپ کو کال کرے گی۔",
         gotIt:"ٹھیک ہے", serviceLbl:"سروس", karigarLbl:"کاریگر", feeLbl:"وزٹ فیس",
         toastBooked:"بکنگ کاریگر کو بھیج دی گئی", toastCancelled:"بکنگ منسوخ کر دی گئی",
         toastAccepted:"کام قبول کر لیا — اللہ برکت دے!", toastRejected:"درخواست مسترد کر دی گئی",
@@ -1175,6 +1191,18 @@
         footerNote:"اپنا کاریگر (apnakarigar.org) — فیصل آباد میں ہوم سروسز۔ دکھائی گئی قیمتیں ابتدائی قیمتیں ہیں؛ آپ کا کاریگر کام شروع ہونے سے پہلے حتمی قیمت کی تصدیق کرے گا۔"
       }
     };
+
+    /* ===== PHASE 1 TEAM CONTACT =====
+       Team WhatsApp number (digits only, international format, e.g. 923XXXXXXXXX).
+       This ONE value switches the registration + booking WhatsApp buttons live. */
+    var ADMIN_WA = "";
+    function waSend(text) {
+      if (!ADMIN_WA) {
+        toast(state.lang === "ur" ? "ٹیم کا واٹس ایپ نمبر جلد لگایا جائے گا" : "Team WhatsApp number coming soon");
+        return;
+      }
+      window.open("https://wa.me/" + ADMIN_WA + "?text=" + encodeURIComponent(text), "_blank");
+    }
 
     /* ==================== STATE ==================== */
     var state = {
@@ -1442,7 +1470,21 @@
           + '<h3 class="disp">' + t("bookingDone") + '</h3>'
           + '<p class="sub">' + t("bookingDoneSub") + '</p></div>'
           + summaryHtml(sh)
+          + '<button type="button" class="btn btn-primary btn-block" id="bk-wa" style="margin-bottom:8px">' + t("waBooking") + '</button>'
           + '<button type="button" class="btn btn-primary btn-block" data-close="1">' + t("gotIt") + '</button>';
+        var bw = $("#bk-wa");
+        if (bw) bw.addEventListener("click", function () {
+          var b = state.lastBooking;
+          if (!b) return;
+          waSend("New Booking — Apna Karigar\nBooking: " + b.id
+            + "\nService: " + b.svc.en
+            + "\nKarigar: " + b.prov.name.en
+            + "\nDay/Time: " + b.when
+            + "\nCustomer: " + (b.custName || "-")
+            + "\nAddress: " + (b.address || "-")
+            + "\nArea: " + (b.custArea ? b.custArea.en : "-")
+            + "\nEst. total: Rs " + b.estTotal);
+        });
       } else {
         var days = dayOptions();
         var dayChips = days.map(function (d, i) {
@@ -1459,6 +1501,8 @@
           + '<div class="chip-row">' + dayChips + '</div>'
           + '<span class="lbl" style="display:block;font-weight:700;margin:6px 0 7px">' + t("time") + '</span>'
           + '<div class="chip-row">' + timeChips + '</div>'
+          + '<label class="lbl" for="bk-name">' + t("bkName") + '</label>'
+          + '<input type="text" id="bk-name" placeholder="' + t("bkNamePh") + '" />'
           + '<label class="lbl" for="bk-address">' + t("address") + '</label>'
           + '<input type="text" id="bk-address" placeholder="' + t("addressPh") + '" />'
           + summaryHtml(sh)
@@ -1476,9 +1520,12 @@
       });
     }
     var lastAddress = "";
+    var lastCustName = "";
     function restoreAddress() {
       var inp = $("#bk-address");
       if (inp) { inp.value = lastAddress; inp.addEventListener("input", function () { lastAddress = inp.value; }); }
+      var nm = $("#bk-name");
+      if (nm) { nm.value = lastCustName; nm.addEventListener("input", function () { lastCustName = nm.value; }); }
     }
     function summaryHtml(sh) {
       var days = dayOptions();
@@ -1498,9 +1545,13 @@
     function confirmBooking() {
       var sh = state.sheet;
       var days = dayOptions();
-      state.bookings.unshift({
+      var addrEl = $("#bk-address");
+      if (addrEl) lastAddress = addrEl.value;
+      var nameEl = $("#bk-name");
+      if (nameEl) lastCustName = nameEl.value.trim();
+      var bk = {
         id: "UK-" + (state.bookingSeq++),
-        svc: sh.svc, prov: sh.prov,
+        svc: sh.svc, prov: sh.prov, custName: lastCustName,
         when: days[sh.day].label + " · " + L(TIMES[sh.time]),
         address: lastAddress,
         custArea: state.myCoords ? { en: STR.en.yourLoc, ur: STR.ur.yourLoc } : AREAS[state.myArea],
@@ -1508,8 +1559,11 @@
         travel: travelFee(sh.svc, distTo(sh.prov)),
         estTotal: sh.prov.fee + travelFee(sh.svc, distTo(sh.prov)),
         status: "pending"
-      });
+      };
+      state.bookings.unshift(bk);
+      state.lastBooking = bk;
       lastAddress = "";
+      lastCustName = "";
       renderBookings();
       renderSheet(true);
       toast(t("toastBooked"));
@@ -1623,6 +1677,12 @@
         return '<option value="' + i + '">' + L(c) + '</option>';
       }).join("");
       if (curCity) citySel.value = curCity;
+      var areaSel = $("#f-area");
+      var curArea = areaSel.value;
+      areaSel.innerHTML = AREAS.map(function (a, i) {
+        return '<option value="' + i + '">' + L(a) + '</option>';
+      }).join("");
+      if (curArea) areaSel.value = curArea;
     }
     function initForm() {
       fillFormOptions();
@@ -1637,7 +1697,23 @@
         }
         var svc = svcById($("#f-service").value);
         var city = CITIES[parseInt($("#f-city").value, 10) || 0];
-        $("#join-summary").textContent = name + " · " + L(svc) + " · " + L(city);
+        var area = AREAS[parseInt($("#f-area").value, 10) || 0];
+        var fee = parseInt($("#f-fee").value, 10) || 0;
+        var exp = $("#f-exp").value;
+        $("#join-summary").textContent = name + " · " + L(svc) + " · " + L(city) + (fee ? " · Rs " + fee : "");
+        var jw = $("#join-wa");
+        jw.textContent = t("joinWa");
+        jw.classList.remove("hidden");
+        jw.onclick = function () {
+          waSend("New Karigar Registration — Apna Karigar"
+            + "\nName: " + name
+            + "\nPhone: " + phone
+            + "\nService: " + svc.en
+            + "\nCity: " + city.en
+            + "\nArea: " + (area ? area.en : "-")
+            + "\nExperience: " + exp + " years"
+            + "\nVisit fee: " + (fee ? "Rs " + fee : "-"));
+        };
         $("#join-wrap").classList.add("hidden");
         $("#join-success").classList.remove("hidden");
         $("#join-success").scrollIntoView({ behavior: "smooth", block: "center" });
